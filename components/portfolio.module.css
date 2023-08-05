@@ -1,0 +1,6 @@
+
+.gridContainer {
+  height: 20rem;
+  overflow-y: auto;
+  margin-bottom: 3rem;
+}

@@ -1,13 +1,14 @@
+'use client'
 import { faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Form, FormControl, FormGroup } from "react-bootstrap";
-import { PairTypes } from "../../types/coin";
+import { PairTypes, PortfolioWithString } from "../../types/coin";
 import styles from "./ticker-form.module.css";
 
 interface TickerFormProps {
     tickers: PairTypes[];
-    initialData: { ticker: string; amount: number }[];
+    initialData: PortfolioWithString;
     onUpdateData: (updatedData: { ticker: string; amount: number }[]) => void;
 }
 
@@ -16,7 +17,12 @@ export const TickerForm: React.FC<TickerFormProps> = ({
     initialData,
     onUpdateData,
 }) => {
-    const [formData, setFormData] = useState(initialData);
+    
+    const [formData, setFormData] = useState<{ ticker: string; amount: number }[]>([]);
+
+    useEffect(() => {
+        setFormData(Object.entries(initialData).map(([k,v]) => ({ticker: k, amount: parseFloat(v)})));
+    },[initialData])
 
     const handleTickerChange = (index: number, selectedTicker: string) => {
         const updatedData = [...formData];

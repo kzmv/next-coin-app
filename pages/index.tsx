@@ -25,9 +25,8 @@ export default function IndexPage() {
 
   return (
     <Layout>
-       <Portfolio session={session}></Portfolio>
+      <Portfolio session={session}></Portfolio>
       <OrderSubmit session={session}></OrderSubmit>
-      {/* <pre>{JSON.stringify(session, null, 2)}</pre> */}
     </Layout>
   )
 }

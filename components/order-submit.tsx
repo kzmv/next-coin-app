@@ -44,9 +44,11 @@ export default function OrderSubmit({ session }: { session: Session }) {
     const { products, accounts } = useProductAndAccounts(chosenFiat);
 
     useEffect(() => {
+        console.log("On load")
         let port;
         // Get the value from local storage if it exists
         port = JSON.parse(localStorage.getItem(PORT_LOCAL_STORE) ?? "{}") 
+        console.log(port);
         setPortfolioJSON(port)
         setAmount(parseFloat(localStorage.getItem(AMOUN_LOCAL_STORE) ?? "0"))
       }, [])
@@ -139,7 +141,7 @@ export default function OrderSubmit({ session }: { session: Session }) {
                 </InputGroup>
                 {!isAmountValid && <div className={styles.errorText}>Amount too big or incorrect</div>}
             </Form.Group>
-            <TickerForm tickers={products?.filter(p => p.product_id.includes(chosenFiat))?.map(p => p.product_id) ?? []} initialData={Object.entries(portfolioJSON).map(([k,v]) => ({ticker: k, amount: parseFloat(v)}))} onUpdateData={handleUpdateData} />
+            <TickerForm tickers={products?.filter(p => p.product_id.includes(chosenFiat))?.map(p => p.product_id) ?? []} initialData={portfolioJSON} onUpdateData={handleUpdateData} />
 
         </Form>
         <div className={styles.orderSubmitButtonContainer}>

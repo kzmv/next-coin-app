@@ -5,12 +5,14 @@ import styles from "./access-denied.module.css";
 
 export default function AccessDenied() {
     return (
-        <div className={styles.conainter}>
+        <div className={styles.container}>
             <h1>Welcome!</h1>
             <div>You must be signed in to view this page</div>
             <div>
+                Checkout the project in 
                 <Button
-                    variant="primary"
+                    className={styles.gitButton}
+                    variant="secondary"
                     onClick={(e) => {
                         e.preventDefault();
                         window.location.href =

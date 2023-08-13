@@ -81,8 +81,10 @@ export interface Product {
     quote_display_symbol: string
 }
 
-export type PortfolioWithString = { [k in PairTypes]?: string };
-export type PortfolioWithNumber = { [k in PairTypes]?: number };
+export type PortfolioWithNumber = { ticker: PairTypes; amount: number, isLocked: boolean }[];
+export type PortfolioWithString = { ticker: PairTypes; amount: string, isLocked: boolean }[];
+
+
 export type PortfolioToProduct = { [k in PairTypes]?: Product };
 
 

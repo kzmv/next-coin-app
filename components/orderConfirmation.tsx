@@ -23,12 +23,12 @@ export default function OrderConfirmation(
     const columns = [
         { name: "Product", selector: (row: LimitOrder) => row.productId },
         { name: "Side", selector: (row: LimitOrder) => row.side },
-        { name: "Fee", selector: (row: LimitOrder) => (parseFloat(row?.order_configuration?.market_market_ioc?.quote_size ?? "0")*0.01).toFixed(3)},
+        { name: "Fee", selector: (row: LimitOrder) => (parseFloat(row?.order_configuration?.market_market_ioc?.quote_size ?? "0")*0.01).toFixed(2)},
         {
             name: "Amount",
             selector: (row: LimitOrder) =>
                 row.order_configuration?.market_market_ioc?.quote_size
-                    ? `£${(parseFloat(row?.order_configuration?.market_market_ioc?.quote_size ?? "0")*0.99).toFixed(3)}`
+                    ? `£${(parseFloat(row?.order_configuration?.market_market_ioc?.quote_size ?? "0")*0.99).toFixed(2)}`
                     : "",
         },
         {

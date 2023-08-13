@@ -29,7 +29,7 @@ import styles from "./order-submit.module.css";
 import { useLocalStorage } from "usehooks-ts";
 import { compact } from "lodash";
 
-const PORT_LOCAL_STORE = "portfolioJson";
+const PORT_LOCAL_STORE = "portfolio";
 const AMOUN_LOCAL_STORE = "amount";
 
 export default function OrderSubmit({ session }: { session: Session }) {

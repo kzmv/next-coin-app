@@ -2,6 +2,7 @@
 import {
     faPlus,
     faTrash,
+    faX,
     faLock,
     faUnlock,
 } from "@fortawesome/free-solid-svg-icons";
@@ -143,7 +144,7 @@ export const TickerForm: React.FC<TickerFormProps> = ({
                             variant="outline-danger"
                             onClick={() => handleDeleteRow(index)}
                         >
-                            <FontAwesomeIcon icon={faTrash} />
+                            <FontAwesomeIcon icon={faX} />
                         </Button>
                     ) : (
                         <div></div>
@@ -161,6 +162,17 @@ export const TickerForm: React.FC<TickerFormProps> = ({
                             </option>
                         ))}
                     </Form.Select>
+                    <FormControl
+                        type="number"
+                        value={row.amount}
+                        onChange={(e) => {
+                            let value = 0;
+                            try {
+                                value = parseFloat(e.target.value);
+                                handleAmountChange(index, value, formData);
+                            } catch (e) {}
+                        }}
+                    />
                     <Button
                         variant="secondary"
                         onClick={() => handleToggleLock(index)}
@@ -185,17 +197,7 @@ export const TickerForm: React.FC<TickerFormProps> = ({
                             } catch (e) {}
                         }}
                     />
-                    <FormControl
-                        type="number"
-                        value={row.amount}
-                        onChange={(e) => {
-                            let value = 0;
-                            try {
-                                value = parseFloat(e.target.value);
-                                handleAmountChange(index, value, formData);
-                            } catch (e) {}
-                        }}
-                    />
+                    
                     {index === formData.length - 1 ? (
                         <Button
                             variant="outline-secondary"

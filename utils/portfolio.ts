@@ -44,7 +44,7 @@ export function allocatePortfolio(normalizedPortfolio: PortfolioWithNumber, amou
   return normalizedPortfolio.map(p => ({ ...p, amount: p.amount * amount }));
 }
 
-export function handleChangeAmount(index: number, newAmount: number, portfolio: PortfolioWithNumber, dontConsiderLocked: boolean = false): PortfolioWithNumbers {
+export function handleChangeAmount(index: number, newAmount: number, portfolio: PortfolioWithNumber, dontConsiderLocked: boolean = false): PortfolioWithNumber {
   // if (portfolio[index].isLocked) {
   //   console.error("Cannot modify a locked entry");
   //   return portfolio;

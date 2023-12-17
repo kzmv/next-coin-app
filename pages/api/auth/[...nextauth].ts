@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions } from "next-auth"
 import CoinbaseProvider from "next-auth/providers/coinbase"
 
 
-const scopes = ["wallet:user:email", "wallet:user:read", "wallet:accounts:read", "wallet:buys:create"];
+const scopes = ["wallet:user:email", "wallet:user:read", "wallet:accounts:read", "wallet:buys:create", "wallet:buys:read"];
 
 async function refreshAccessToken(token: any) {
   try {

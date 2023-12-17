@@ -59,6 +59,14 @@ export const authOptions: NextAuthOptions = {
     })
   ],
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return true
+    },
+    async redirect({url, baseUrl}) {
+        console.log(url);
+        console.log(baseUrl)
+        return baseUrl
+    },
     async session({ session, token, user }) {
       // Send properties to the client, like an access_token from a provider.
       if (token) {

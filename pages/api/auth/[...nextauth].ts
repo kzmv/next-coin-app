@@ -74,6 +74,7 @@ export const authOptions: NextAuthOptions = {
       // Persist the OAuth access_token to the token right after signin
       if (account && user) {
         return {
+          ...token,
           accessToken: account.accessToken,
           accessTokenExpires: Date.now() + (account as any).expires_in * 1000,
           refreshToken: account.refresh_token,
